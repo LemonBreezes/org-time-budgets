@@ -1,4 +1,4 @@
-;;; org-time-budgets.el --- Define time budgets and display clocked time. -*- lexical-binding: t -*-
+;;; org-time-budgets.el --- Define time budgets and display clocked time.
 
 ;; Author: Arthur Leonard Andersen <leoc.git@gmail.com>
 ;; Created: November 08, 2015
@@ -129,9 +129,9 @@ See this example:
 (defun org-time-budgets-table ()
   "List the time budgets in a table."
   (let ((title-column-width (apply #'max
-                                   (mapcar (lambda (budget) (string-width (plist-get budget :title)))
+                                   (mapcar #'(lambda (budget) (string-width (plist-get budget :title)))
                                            org-time-budgets))))
-    (mapconcat (lambda (budget)
+    (mapconcat #'(lambda (budget)
                   (let* ((title (plist-get budget :title))
                          (match (or (plist-get budget :match)
                                     (plist-get budget :tags))) ;; support for old :tags syntax
